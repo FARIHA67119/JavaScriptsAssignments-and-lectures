@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100">
+    <div class="bg-white max-w-md mx-auto rounded-lg">
+        <div class="bg-indigo-500 text-white p-5">
+            <h1>Todo app</h1>
+        </div>
+
+      <div class="p-5">
+          <form action="" id="todo-form" class="gap-5 flex flex-col mb-6">
+            <div class="flex gap-5 mb-1">
+                <input id="todo-input" placeholder="Enter task description..." class="flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-800"
+                        type="text">
+            
+                <button class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors cursor-pointer" id="form-btn">Add</button>
+                </div>
+                <button type="button" id="cancel-btn" class="hidden self-end text-xs text-slate-500 hover:text-slate-700 underline cursor-pointer">Cancel Editing
+                </button>
+            </form>
+
+
+                  <div class="flex items-center justify-between py-2 border-b border-slate-100  mb-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+            <p id="task-count">TASKS (0)</p>
+            <p id="complete-count">Completed : 0</p>
+        </div>
+            
+
+        <ul id="todo-list" class="py-5 flex flex-col gap-3">
+            <!-- <li data-id="1" class="flex-1 gap-2 border border-slate-300 p-4 rounded-xl">
+                <input type="checkbox">
+                <p class="flex-1">go t</p>
+                <div class="flex gap-2">
+                    <button data-id="1">Edit</button>
+                    <button>Delete</button>
+                </div>
+            </li> -->
+        </ul>
+
+        <div id="empty-state" class="hidden text-center py-8 text-slate-400">
+            <p class="text-sm">No tasks found. Add a task above to get started!</p>
+
+        </div>
+    </div>
+</div>
+
+
+    <script src="todo.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+</body>
+<form action="" id="form"> 
+    <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="username" placeholder="Enter your name">
+        <span class="error-message" style="color:red"></span>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Enter your email">
+        <span class="error-message" style="color:red"></span>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Enter your password">
+        <span class="error-message" style="color:red"></span>
+    </div>
+    
+        <p id="password-hint" class="hidden">Must be atleast 8 characters</p>
+
+    <div>
+        <label for="bio">Bio: </label>
+        <textarea name="bio" id="bio" placeholder="Enter Your Bio... "></textarea>
+        <p id="char-count"></p>
+        <span class="error-message" style="color:red"></span>
+    </div>
+
+    <div>
+        <label for="country">
+            Select Your Country </label>
+            <select name="country"id="country">
+                 <option value="" disabled selected >Country</option>
+                <option value="india">India</option>
+                <option value="usa">USA</option>
+                <option value="uk">UK</option>
+            </select>
+            <span class="error-message" style="color:red"></span>
+        
+    </div>
+
+    <div>
+       <input type="checkbox" id="checkbox">
+    <label for="checkbox">I agree to the terms and conditions</label>
+    <span class="error-message" style="color:red; display:block;"></span>
+    </div>
+
+    <button id="btn" type="submit">Create Account</button>
+</form>
+ <h1 class="hidden">Account Created SuccessFully 🎉</h1>
+     <script src="lect41.js"></script>
+</body>
+</html>
