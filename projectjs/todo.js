@@ -121,7 +121,6 @@ todoList.addEventListener('click', (e) => {
     let li = e.target.closest('li');
     let id = li.dataset.id; 
     // let btn = e.target.closest('button');
-
     let action = e.target.dataset.action;
     
     // let checkbox = e.target.closest('input[type="checkbox"]');

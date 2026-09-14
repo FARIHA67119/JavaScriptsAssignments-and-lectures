@@ -3,6 +3,8 @@
 // title.innerText = "Hello JavaScript";
 // console.log(title);
 
+
+
 //q2
 // let desc = document.querySelector(".description");
 // desc.textContent = "New Description";
@@ -45,7 +47,60 @@
 // console.log(productId);
 
 //q10
-const para = document.createElement("p");
-para.textContent = "This paragraph created in js";
-// console.log(para);
-document.body.append(para);
+// const para = document.createElement("p");
+// para.textContent = "This paragraph created in js";
+// // console.log(para);
+// document.body.append(para);
+
+//q11
+
+// let skills = document.querySelector("#skills");
+// const skillList = ['HTML', 'CSS', 'JS'];
+
+// skillList.forEach(e => {
+//     const li = document.createElement("li");
+//     li.textContent = e;
+//     // console.log(li);
+
+//     skills.append(li);
+
+// })
+
+
+//q12
+// const skills = document.querySelector("#skills");
+
+// const li = document.createElement('li');
+// li.textContent = "HTML";
+// skills.prepend(li);
+
+// const lsitem = document.createElement('li');
+// lsitem.textContent = "React";
+// skills.append(lsitem);
+
+//q13
+// const list = document.querySelector("#skills");
+// const secondItem = list.children[1];
+
+// const newItem = document.createElement('li');
+// newItem.textContent = "CSS";
+
+// list.insertBefore(newItem, secondItem) //insertBefore() requires two arguments. Even in DOM manipulation, insertBefore(newNode, referenceNode) takes the new node first and the reference node second.
+
+
+//q14
+//  const skillList = ['HTML', 'CSS', 'JS'];
+//  skillList.remove(1);
+
+// const skill = document.querySelector("#skills");
+// const remove = skill.children[1];
+
+// skill.remove(remove);
+// console.log(skill);
+
+//q15
+// const btn = document.querySelector("#btn");
+// const b1 = btn.cloneNode(true);
+// const b = btn.cloneNode(false)// console.log(btn); 
+// console.log(b1); 
+// console.log(b); 
