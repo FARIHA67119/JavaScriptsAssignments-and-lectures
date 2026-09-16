@@ -1,6 +1,6 @@
 // const { act } = require("react");
 
-let todos = [{
+let defaultTodos = [{
     id : Date.now() +  1,
     text : "Go to Gym",
     isCompleted : false,
@@ -14,7 +14,7 @@ let todos = [{
     isCompleted : false,
 }];
 
-todos = JSON.parse(localStorage.getItem("todos")) || todos;
+let todos = JSON.parse(localStorage.getItem("todos")) || defaultTodos;
 
 
 const todoform = document.querySelector("#todo-form");
@@ -60,7 +60,7 @@ todoform.addEventListener('submit', (e) => {
     } else {
         //adding
         let newTodo = {
-              id: Date.now(),
+         id: Date.now(),
         text: todoValue,
         isCompleted : false
         }
@@ -191,13 +191,11 @@ todoList.addEventListener('click', (e) => {
 // })
 function deleteTodo(id) {
     // e.target.closest('li').remove();
-    
-    todos = todos.filter((todo) => {
-        
-    if(todo.id !== Number(id)) {
-        return todo;
+    if(editTodoId === id) {
+        cancelEdit();
     }
-    });
+    todos = todos.filter((todo) => todo.id !== Number(id));
+
     saveTodos();
     renderTodo();
 }
@@ -205,11 +203,7 @@ function deleteTodo(id) {
 function startEdit(id) {
     editTodoId = id;
 
-    let currentTodo = todos.find((todo) => {
-        if(todo.id === Number(id)) {
-            return todo;
-        }
-    })
+    let currentTodo = todos.find((todo) => todo.id === Number(id));
 
     todoInput.value = currentTodo.text;
     todoInput.focus();
@@ -234,3 +228,5 @@ function cancelEdit() {
 cancelBtn.addEventListener("click", () => {
     cancelEdit();
 });
+
+renderTodo();
