@@ -14,6 +14,9 @@ let todos = [{
     isCompleted : false,
 }];
 
+todos = JSON.parse(localStorage.getItem("todos")) || todos;
+
+
 const todoform = document.querySelector("#todo-form");
 const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector("#todo-list");
@@ -23,6 +26,13 @@ let completeCount = document.querySelector("#complete-count");
 let cancelBtn = document.querySelector("#cancel-btn");
 
 let editTodoId = null;
+
+//helper function to scae crnt state to browser storage
+function saveTodos() {
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+//form submit
 todoform.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -56,7 +66,7 @@ todoform.addEventListener('submit', (e) => {
         }
         todos.push(newTodo); //adding new todo to existing todos list 
     }
-
+    saveTodos();
     cancelEdit();
     renderTodo();
     
@@ -89,13 +99,13 @@ function renderTodo() {
                     </div>`
 
                     todoList.append(li); 
-})
+});
 
     taskCount.textContent = `TASKS (${todos.length})`;
     completeCount.textContent = `COMPLETED: ${todos.filter((todo) => todo.isCompleted).length}`
 }
 
-renderTodo(); // first time render 
+// renderTodo(); // first time render 
 
 // function addtodo(todo) {
 //  const li = document.createElement("li");
@@ -116,9 +126,12 @@ renderTodo(); // first time render
 //event delegation
 
 todoList.addEventListener('click', (e) => {
-    e.stopPropagation();
+    // e.stopPropagation();
+  
 
-    let li = e.target.closest('li');
+    let li = e.target.closest('li'); 
+    if(!li) return;
+
     let id = li.dataset.id; 
     // let btn = e.target.closest('button');
     let action = e.target.dataset.action;
@@ -127,7 +140,7 @@ todoList.addEventListener('click', (e) => {
 
     if(action === "delete") {
         deleteTodo(id);
-    }
+    } 
 
 
     if(action === "edit") {
@@ -156,6 +169,7 @@ todoList.addEventListener('click', (e) => {
         }
         return todo;
        })
+       saveTodos();
        renderTodo()
     }
     });
@@ -183,7 +197,8 @@ function deleteTodo(id) {
     if(todo.id !== Number(id)) {
         return todo;
     }
-    })
+    });
+    saveTodos();
     renderTodo();
 }
 
@@ -197,6 +212,8 @@ function startEdit(id) {
     })
 
     todoInput.value = currentTodo.text;
+    todoInput.focus();
+
     formBtn.textContent = "update";
     formBtn.className =  "px-5 py-2 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg transition-colors cursor-pointer";
 
