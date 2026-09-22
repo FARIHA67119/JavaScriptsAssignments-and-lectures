@@ -14,7 +14,6 @@ let defaultTodos = [{
     isCompleted : false,
 }];
 
-let todos = JSON.parse(localStorage.getItem("todos")) || defaultTodos;
 
 
 const todoform = document.querySelector("#todo-form");
@@ -25,12 +24,10 @@ let taskCount = document.querySelector("#task-count");
 let completeCount = document.querySelector("#complete-count");
 let cancelBtn = document.querySelector("#cancel-btn");
 
-let editTodoId = null;
 
-//helper function to scae crnt state to browser storage
-function saveTodos() {
-    localStorage.setItem("todos", JSON.stringify(todos));
-}
+let todos = JSON.parse(localStorage.getItem("todos")) || defaultTodos;
+
+let editTodoId = null; //flag
 
 //form submit
 todoform.addEventListener('submit', (e) => {
@@ -56,6 +53,8 @@ todoform.addEventListener('submit', (e) => {
             }
             return todo;
         }) 
+        
+    localStorage.getItem("todos", JSON.stringify(todos));
 
     } else {
         //adding
@@ -65,8 +64,9 @@ todoform.addEventListener('submit', (e) => {
         isCompleted : false
         }
         todos.push(newTodo); //adding new todo to existing todos list 
+          localStorage.getItem("todos", JSON.stringify(todos));
     }
-    saveTodos();
+  
     cancelEdit();
     renderTodo();
     
@@ -169,7 +169,7 @@ todoList.addEventListener('click', (e) => {
         }
         return todo;
        })
-       saveTodos();
+        localStorage.getItem("todos", JSON.stringify(todos));
        renderTodo()
     }
     });
@@ -196,7 +196,7 @@ function deleteTodo(id) {
     }
     todos = todos.filter((todo) => todo.id !== Number(id));
 
-    saveTodos();
+     localStorage.getItem("todos", JSON.stringify(todos));
     renderTodo();
 }
 
@@ -206,7 +206,7 @@ function startEdit(id) {
     let currentTodo = todos.find((todo) => todo.id === Number(id));    
 
     todoInput.value = currentTodo.text;
-    todoInput.focus();
+  
 
     formBtn.textContent = "update";
     formBtn.className =  "px-5 py-2 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg transition-colors cursor-pointer";
@@ -229,4 +229,4 @@ cancelBtn.addEventListener("click", () => {
     cancelEdit();
 });
 
-renderTodo();
+// renderTodo();
