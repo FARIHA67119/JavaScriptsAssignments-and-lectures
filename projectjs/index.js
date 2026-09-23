@@ -220,7 +220,7 @@ function cancelEdit() {
     todoInput.value = "";
 
     formBtn.textContent = "Add";
-    formBtn.className =    "px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors cursor-pointer";
+    formBtn.className = "px-5 py-2 bg-pink-600 hover:bg-pink-700 text-white font-medium rounded-lg transition-colors cursor-pointer";
 
     cancelBtn.classList.add("hidden");
 }
