@@ -1,0 +1,279 @@
+.loader {
+  --color-1: #fff;
+  --color-2: #ff3d00;
+  --size: 1px;
+
+  width: calc(48 * var(--size));
+  height: calc(48 * var(--size));
+  border: calc(5 * var(--size)) solid var(--color-1);
+  border-bottom-color: var(--color-2);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Import Modern Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+/* Global Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: #000000; /* Pure Black */
+    color: #fffafa; /* Snow White */
+    min-height: 100vh;
+    padding: 2.5rem 2rem;
+    line-height: 1.5;
+}
+
+/* Main Heading */
+h1 {
+    text-align: center;
+    color: #fffafa;
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+}
+
+/* Search Form Wrapper */
+div:has(#movieForm) {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3.5rem;
+}
+
+#movieForm {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+    background-color: #111111;
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid #222222;
+}
+
+#movieInput {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    background: transparent;
+    color: #fffafa;
+    font-size: 1rem;
+    outline: none;
+}
+
+#movieInput::placeholder {
+    color: #666666;
+}
+
+#movieForm button {
+    padding: 0.8rem 1.8rem;
+    border-radius: 6px;
+    border: 1px solid #fffafa;
+    background-color: #fffafa;
+    color: #000000;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#movieForm button:hover {
+    background-color: #000000;
+    color: #fffafa;
+}
+
+/* Movies Grid Layout (index.html) */
+#movieHub {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Dynamic Movie Cards (Matches JS output) */
+.movie-card {
+    background-color: #0a0a0a;
+    border: 1px solid #1c1c1c;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+    border-color: #fffafa;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.08);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    background-color: #000000;
+}
+
+/* Card Text Container */
+.movie-card div:last-child {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.movie-card p:first-child {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fffafa;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-card p:last-child {
+    color: #777777;
+    font-size: 0.85rem;
+}
+
+/* Details Page Container (movieDetails.html) */
+#movie-detail {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #0a0a0a;
+    border: 1px solid #1c1c1c;
+    border-radius: 12px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    #movie-detail {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+#movie-detail > div:first-child img {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 8px;
+    border: 1px solid #222222;
+}
+
+#movie-detail > div:last-child {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+#movie-detail h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #fffafa;
+}
+
+#movie-detail section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+#movie-detail section p {
+    background-color: #141414;
+    border: 1px solid #222222;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #dddddd;
+}
+
+#movie-detail p {
+    color: #aaaaaa;
+}
+
+#movie-detail button {
+    background: none;
+    border: none;
+    align-self: flex-start;
+}
+
+#movie-detail button a {
+    display: inline-block;
+    background-color: #fffafa;
+    color: #000000;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+#movie-detail button a:hover {
+    background-color: #000000;
+    color: #fffafa;
+    outline: 1px solid #fffafa;
+}
+
+/* Spinner */
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #222222;
+    border-top-color: #fffafa;
+    border-radius: 50%;
+    display: block;
+    margin: 3rem auto;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: 0.6rem 1.4rem;
+    /* background-color: transparent; */
+    color: #fffafa; /* Snow White */
+    border: 1px solid #333333;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    background-color: #fffafa;
+    color: #000000;
+    border-color: #fffafa;
+    transform: translateX(-4px); /* Subtle nudge left on hover */
+}
