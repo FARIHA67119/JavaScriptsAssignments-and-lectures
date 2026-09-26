@@ -256,7 +256,7 @@ div:has(#movieForm) {
     100% { transform: rotate(360deg); }
 }
 
-.back-btn {
+#backBtn {
     display: inline-block;
     margin-bottom: 2rem;
     padding: 0.6rem 1.4rem;
@@ -271,7 +271,7 @@ div:has(#movieForm) {
     transition: all 0.2s ease;
 }
 
-.back-btn:hover {
+#backBtn:hover {
     background-color: #fffafa;
     color: #000000;
     border-color: #fffafa;
