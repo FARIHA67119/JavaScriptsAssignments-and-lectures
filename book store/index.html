@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dreamers Book World - Online Bookstore & Reading Hub</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        alpineGreen: '#1E3F20',
+                        pineHover: '#142C15',
+                        sunWarmth: '#D4A373',
+                        sunLight: '#FAEDCD',
+                        sunCream: '#FEFAE0',
+                        paperWhite: '#FDFBF7',
+                        textMuted: '#5C6B5E'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FEFAE0;
+            color: #1E3F20;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+
+
+<body class="bg-sunCream min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- Header / Navbar -->
+    <header class="w-full border-b border-gray-200/60 bg-sunCream/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+            <a href="#" class="font-serif text-xl sm:text-2xl font-bold text-alpineGreen flex items-center space-x-2 truncate">
+                <span>Dreamers Book World</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-alpineGreen">
+                <a href="#catalog" class="hover:text-sunWarmth transition-colors">Browse Bookstore</a>
+                <a href="#reader-section" class="hover:text-sunWarmth transition-colors">Read Online Mode</a>
+            </nav>
+
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <!-- Search Form -->
+                <form id="search-form" class="relative hidden sm:block">
+                    <input type="text" id="search-input" placeholder="Search books or authors..." 
+                        class="bg-paperWhite border border-gray-200 text-alpineGreen text-xs rounded-full pl-9 pr-4 py-2.5 focus:outline-none focus:border-sunWarmth w-48 lg:w-60 transition-all shadow-sm">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-textMuted text-xs"></i>
+                </form>
+
+                <button id="basket-btn" class="bg-paperWhite border border-gray-200 hover:border-sunWarmth text-alpineGreen px-3 sm:px-4 py-2 rounded-full text-xs font-semibold flex items-center space-x-2 transition-all shadow-sm shrink-0">
+                    <i class="fa-solid fa-basket-shopping text-sunWarmth"></i>
+                    <span class="hidden xs:inline">Basket</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="py-8 sm:py-12 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            <!-- Hero Text Content -->
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <p class="text-xs uppercase font-semibold text-sunWarmth tracking-widest inline-flex items-center space-x-2">
+                    <i class="fa-solid fa-sun text-sunLight"></i>
+                    <span>A Quiet Space for Readers</span>
+                </p>
+                
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-alpineGreen">
+                    Read online instantly. <br class="hidden sm:inline">
+                    <span class="italic font-normal text-sunWarmth">Or order directly to your door.</span>
+                </h1>
+
+                <p class="text-textMuted text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
+                    Like warm sun rays touching sunflowers in cold mountain valley air. Immerse yourself in e-books or get physical books delivered seamlessly.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-2 justify-center lg:justify-start">
+                    <a href="#catalog" class="inline-flex items-center justify-center bg-alpineGreen hover:bg-pineHover text-sunCream font-medium px-7 py-3.5 rounded-xl transition-all shadow-sm">
+                        <i class="fa-solid fa-book-open mr-2 text-sunLight"></i> Read Online
+                    </a>
+                    <a href="#catalog" class="inline-flex items-center justify-center bg-paperWhite border border-gray-200 hover:border-sunWarmth text-alpineGreen font-medium px-7 py-3.5 rounded-xl transition-all shadow-sm">
+                        <i class="fa-solid fa-truck-fast mr-2 text-sunWarmth"></i> Order Hardcover
+                    </a>
+                </div>
+            </div>
+
+            <!-- Featured Book Preview Card -->
+            <div class="lg:col-span-5 flex justify-center w-full">
+                <div id="hero-section-container" class="bg-paperWhite p-6 rounded-3xl border border-gray-200/80 shadow-sm w-full max-w-sm flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-3/4 rounded-2xl overflow-hidden bg-gray-100">
+                            <img id="hero-section-img" src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=800" alt="Featured Book" class="w-full h-full object-cover">
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-[10px] uppercase font-bold text-sunWarmth tracking-wider">Featured Read</span>
+                            <h3 id="hero-section-title" class="font-serif text-2xl font-bold text-alpineGreen mt-0.5">The Midnight Library</h3>
+                            <p id="hero-section-author" class="text-xs text-textMuted">Matt Haig</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between pt-3 border-t border-gray-100 gap-2">
+                        <span class="font-serif font-bold text-lg sm:text-xl text-alpineGreen">Free</span>
+                        <div class="flex space-x-2">
+                            <button id="hero-section-order" class="add-to-cart-btn px-3 py-1.5 bg-alpineGreen hover:bg-pineHover text-sunCream text-xs font-bold rounded-lg transition-colors" data-id="">
+                                <i class="fa-solid fa-cart-shopping mr-1"></i> Order
+                            </button>
+                            <button id="hero-section-read" class="open-reader-btn px-3 py-1.5 bg-sunCream hover:bg-sunLight text-alpineGreen text-xs font-bold rounded-lg transition-colors" data-book-key="" data-ia="">
+                                <i class="fa-solid fa-book-open mr-1"></i> Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section with Categories Sidebar & Dynamic Books Hub -->
+    <section id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 w-full">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 border-b border-gray-200/60 pb-4 gap-2">
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-alpineGreen">Book Collection</h2>
+            <span class="text-xs text-textMuted font-medium">Browse digital e-books to read online or order physical copies</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Sidebar: Categories -->
+            <div class="lg:col-span-3 space-y-6">
+                <div id="categories" class="bg-paperWhite p-4 sm:p-6 rounded-3xl border border-gray-200/80 shadow-sm space-y-4">
+                    <h3 class="font-serif font-bold text-lg text-alpineGreen">Categories</h3>
+                    <ul class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible space-x-2 lg:space-x-0 lg:space-y-2 text-sm font-medium text-textMuted pb-2 lg:pb-0">
+                        <li class="shrink-0"><a href="#" class="category-link block px-3 py-2 rounded-xl bg-alpineGreen text-sunCream font-semibold" data-query="bestsellers">All Genres</a></li>
+                        <li class="shrink-0"><a href="#" class="category-link block px-3 py-2 rounded-xl hover:bg-sunLight/50 text-alpineGreen transition-colors" data-query="fiction">Fiction</a></li>
+                        <li class="shrink-0"><a href="#" class="category-link block px-3 py-2 rounded-xl hover:bg-sunLight/50 text-alpineGreen transition-colors" data-query="science fiction">Sci-Fi & Fantasy</a></li>
+                        <li class="shrink-0"><a href="#" class="category-link block px-3 py-2 rounded-xl hover:bg-sunLight/50 text-alpineGreen transition-colors" data-query="self help">Mind & Growth</a></li>
+                        <li class="shrink-0"><a href="#" class="category-link block px-3 py-2 rounded-xl hover:bg-sunLight/50 text-alpineGreen transition-colors" data-query="classic literature">Classics</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Area: Dynamic Books Grid -->
+            <div class="lg:col-span-9 space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs text-textMuted font-semibold uppercase tracking-wider">Showing available titles</span>
+                </div>
+
+                <!-- Dynamic Books Hub Grid Container -->
+                <div id="books-hub" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full">
+                    <!-- Dynamic search/default API results inject here cleanly -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reader Section Canvas -->
+    <section id="reader-section" class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 w-full">
+        <div class="bg-alpineGreen text-sunCream p-6 sm:p-8 lg:p-12 rounded-3xl shadow-lg space-y-6">
+            <!-- Header -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-4 gap-2">
+                <span class="text-xs uppercase font-bold text-sunLight tracking-wider">Online Reader Canvas</span>
+                <span id="reader-title" class="font-serif text-base sm:text-lg font-bold text-sunCream truncate max-w-full sm:max-w-md">Select a book to preview</span>
+            </div>
+            
+            <!-- Dynamic Reader Container -->
+            <div id="reader-container">
+                <div class="p-8 sm:p-12 text-center text-sunCream/70 bg-pineHover/30 rounded-2xl border border-white/10">
+                    <i class="fa-solid fa-book-open text-3xl sm:text-4xl mb-3 text-sunLight"></i>
+                    <p class="text-xs sm:text-sm">Click the <strong>Preview</strong> button on any book card to load the live reader here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-gray-200/60 bg-paperWhite/50 mt-16 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-textMuted gap-4 text-center sm:text-left">
+            <p>&copy; 2026 Dreamers Book World. All Rights Reserved.</p>
+            <p>FARIHA RUMAN</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+
+
+     
+</html>
+
+ 

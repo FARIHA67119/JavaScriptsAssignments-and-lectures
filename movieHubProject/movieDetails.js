@@ -14,7 +14,7 @@ async function searchMovies(movieName) {
 
     if(data.Response === "True") {
         displayMovies(data);
-        backBtn();
+            backBtn();
     } else {
         console.log(data.Error);
     }

@@ -1,0 +1,114 @@
+=<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Basket - Dreamers Book World</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Custom Configuration Matching Your Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        alpineGreen: '#1b3b2b',
+                        pineHover: '#13281d',
+                        sunWarmth: '#c29b38',
+                        sunCream: '#fbf7ee',
+                        paperWhite: '#ffffff',
+                        textMuted: '#6b7280'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-sunCream font-sans text-alpineGreen min-h-screen flex flex-col justify-between selection:bg-sunWarmth selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="w-full bg-paperWhite/80 backdrop-blur-md border-b border-gray-200/60 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-serif text-2xl font-bold tracking-tight text-alpineGreen">
+                Dreamers Book World
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="index.html" class="hover:text-sunWarmth transition-colors">Browse Bookstore</a>
+                <a href="index.html#reader-section" class="hover:text-sunWarmth transition-colors">Read Online Mode</a>
+            </nav>
+            <div id="back-to-store" class="flex items-center space-x-4">
+                <a href="index.html" class="flex items-center space-x-2 px-4 py-2 bg-alpineGreen text-sunCream rounded-xl font-bold text-xs shadow-sm hover:bg-pineHover transition-colors">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Back to Store</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Basket Content -->
+    <main class="grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+        
+        <!-- Page Title & Subtitle -->
+        <div class="mb-8">
+            <h1 class="font-serif text-4xl font-bold text-alpineGreen">Your Shopping Basket</h1>
+            <p class="text-sm text-textMuted mt-1">Review your selected titles and proceed to secure checkout.</p>
+        </div>
+
+        <!-- Layout Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Left Side: Cart Items List Container -->
+            <div class="lg:col-span-2">
+                <div id="basket-items-container" class="space-y-4">
+                    <!-- Dynamic cart items will load here -->
+                </div>
+            </div>
+
+            <!-- Right Side: Order Summary Card -->
+            <div class="bg-paperWhite p-6 rounded-3xl border border-gray-200/80 shadow-sm h-fit space-y-6">
+                <h3 class="font-serif text-xl font-bold text-alpineGreen pb-4 border-b border-gray-100">Order Summary</h3>
+                
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between text-textMuted">
+                        <span>Items Subtotal</span>
+                        <span id="basket-subtotal" class="font-bold text-alpineGreen">$0.00</span>
+                    </div>
+                    <div class="flex justify-between text-textMuted">
+                        <span>Estimated Shipping</span>
+                        <span class="text-alpineGreen font-bold">Free</span>
+                    </div>
+                    <div class="pt-3 border-t border-gray-100 flex justify-between font-bold text-lg text-alpineGreen">
+                        <span>Total Price</span>
+                        <span id="basket-total" class="text-sunWarmth">$0.00</span>
+                    </div>
+                </div>
+
+                <button id="checkout-btn" class="w-full py-3.5 bg-alpineGreen hover:bg-pineHover text-sunCream font-bold rounded-2xl shadow-md transition-colors text-center cursor-pointer text-sm">
+                    <i class="fa-solid fa-lock mr-2"></i> Proceed to Secure Checkout
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-paperWhite border-t border-gray-200/60 py-8 mt-12 text-center text-xs text-textMuted">
+        <p>&copy; 2026 Dreamers Book World. All rights reserved.</p>
+    </footer>
+<script src="basket.js"></script>
+</body>
+</html>
